@@ -1,0 +1,12 @@
+<p>auto-complete works!</p>
+<div class="card flex justify-content-center">
+    <p-autoComplete 
+        [(ngModel)]="selectedItem"
+        [suggestions]="suggestions"
+        (completeMethod)="search($event)" />
+</div>
+
+//Forms
+<form>
+    <input pInputText placeholder="Enter your name"/>
+</form>
