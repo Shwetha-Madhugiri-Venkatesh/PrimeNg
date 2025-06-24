@@ -1,24 +1,32 @@
-import { Component } from '@angular/core';
-
-interface AutoCompleteCompleteEvent {
-    //originalEvent: Event;
-    query: string;
-}
+import { Component, inject, OnInit } from '@angular/core';
+import { User } from '../Models/User';
+import { HTTPServices } from '../Services/http_service';
 
 @Component({
   selector: 'app-auto-complete',
   templateUrl: './auto-complete.component.html',
   styleUrls: ['./auto-complete.component.css'],
 })
-export class AutoCompleteComponent {
+export class AutoCompleteComponent implements OnInit{
+    users:User[]=[];
+    suggestions;
+    user_service = inject(HTTPServices);
 
-    //items: any[] | undefined;
+    ngOnInit(){
+        this.user_service.users_fetch().subscribe((res:User[])=>{
+            this.users=res;
+            console.log(this.users);
+        })
+    }
 
-    selectedItem: any;
-
-    suggestions: any[] | undefined;
-
-    search(event: AutoCompleteCompleteEvent) {
-        this.suggestions = [...Array(10).keys()].map(item => event.query + '-' + item);
+    auto_complete(event){
+        this.suggestions=[];
+        let search = event.query.toLowerCase();
+        this.users.forEach((user)=>{
+            if(user.fname.startsWith(search)){
+                this.suggestions.push(user);
+            }
+        })
+        console.log(this.suggestions);
     }
 }

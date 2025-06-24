@@ -1,0 +1,28 @@
+{
+  "user": [
+    {
+      "id": "ca35",
+      "fname": "shwetha",
+      "lname": "m v",
+      "dob": "2025-06-24T12:00"
+    },
+    {
+      "id": "685a",
+      "fname": "manu",
+      "lname": "Venkatesh",
+      "dob": "2025-06-25T12:02"
+    },
+    {
+      "id": "8afb",
+      "fname": "anitha",
+      "lname": "Venkatesh",
+      "dob": "2025-06-25T12:43"
+    },
+    {
+      "id": "7aa2",
+      "fname": "swathi",
+      "lname": "Venkatesh",
+      "dob": "2025-06-25T12:43"
+    }
+  ]
+}

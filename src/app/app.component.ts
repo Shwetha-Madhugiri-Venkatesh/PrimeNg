@@ -1,49 +1,121 @@
-import { Component, OnInit } from '@angular/core';
-import { FilterMatchMode, PrimeNGConfig } from 'primeng/api';
+import { Component, inject, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { HTTPServices } from './Services/http_service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  title = 'PrimeNg';
+export class AppComponent{
+  http_service = inject(HTTPServices);
+  form_submit(form:NgForm){
+    alert("Data submitted");
+    this.http_service.user_post(form.value);
+  }
 
-   constructor(private primengConfig: PrimeNGConfig) {
-    //  this.primengConfig.csp.set({nonce: '...'});
-   }
+  minDate = new Date();
+ countries: any[] | undefined;
 
-    cities: any[] = [];
-  selectedCity: any;
-  displayDialog: boolean = false;
+  // countries=[
+  //   {
+  //     name:"India",
+  //     state:{
+  //       name:"Karnataka",
+  //       cities:[
+  //         {'cname':"Bangalore"},
+  //         {'cname':"Tumkur"},
+  //       ]
+  //     }
+  //   },
 
-    ngOnInit() {
-        this.primengConfig.ripple = true;
-        this.primengConfig.zIndex = {
-            modal: 1100,    // dialog, sidebar
-            overlay: 1000,  // dropdown, overlaypanel
-            menu: 1000,     // overlay menus
-            tooltip: 1100   // tooltip
-        };
+  //   {
+  //     name:"Australia",
+  //     state:{
+  //       name:"chicago",
+  //       cities:[
+  //         {cname:"Bangalore"},
+  //         {cname:"Tumkur"},
+  //       ]
+  //     }
+  //   }
+  // ]
 
-         this.primengConfig.filterMatchModeOptions = {
-            text: [FilterMatchMode.STARTS_WITH, FilterMatchMode.CONTAINS, FilterMatchMode.NOT_CONTAINS, FilterMatchMode.ENDS_WITH, FilterMatchMode.EQUALS, FilterMatchMode.NOT_EQUALS],
-            numeric: [FilterMatchMode.EQUALS, FilterMatchMode.NOT_EQUALS, FilterMatchMode.LESS_THAN, FilterMatchMode.LESS_THAN_OR_EQUAL_TO, FilterMatchMode.GREATER_THAN, FilterMatchMode.GREATER_THAN_OR_EQUAL_TO],
-            date: [FilterMatchMode.DATE_IS, FilterMatchMode.DATE_IS_NOT, FilterMatchMode.DATE_BEFORE, FilterMatchMode.DATE_AFTER]
-        };
-
-        this.primengConfig.setTranslation({
-            accept: 'Accept',
-            reject: 'Cancel',
-            //translations
-        });
-
-        this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' }
-    ];
+  ngOnInit() {
+        this.countries = [
+            {
+                name: 'Australia',
+                code: 'AU',
+                states: [
+                    {
+                        name: 'New South Wales',
+                        cities: [
+                            { cname: 'Sydney', code: 'A-SY' },
+                            { cname: 'Newcastle', code: 'A-NE' },
+                            { cname: 'Wollongong', code: 'A-WO' }
+                        ]
+                    },
+                    {
+                        name: 'Queensland',
+                        cities: [
+                            { cname: 'Brisbane', code: 'A-BR' },
+                            { cname: 'Townsville', code: 'A-TO' }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: 'Canada',
+                code: 'CA',
+                states: [
+                    {
+                        name: 'Quebec',
+                        cities: [
+                            { cname: 'Montreal', code: 'C-MO' },
+                            { cname: 'Quebec City', code: 'C-QU' }
+                        ]
+                    },
+                    {
+                        name: 'Ontario',
+                        cities: [
+                            { cname: 'Ottawa', code: 'C-OT' },
+                            { cname: 'Toronto', code: 'C-TO' }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: 'United States',
+                code: 'US',
+                states: [
+                    {
+                        name: 'California',
+                        cities: [
+                            { cname: 'Los Angeles', code: 'US-LA' },
+                            { cname: 'San Diego', code: 'US-SD' },
+                            { cname: 'San Francisco', code: 'US-SF' }
+                        ]
+                    },
+                    {
+                        name: 'Florida',
+                        cities: [
+                            { cname: 'Jacksonville', code: 'US-JA' },
+                            { cname: 'Miami', code: 'US-MI' },
+                            { cname: 'Tampa', code: 'US-TA' },
+                            { cname: 'Orlando', code: 'US-OR' }
+                        ]
+                    },
+                    {
+                        name: 'Texas',
+                        cities: [
+                            { cname: 'Austin', code: 'US-AU' },
+                            { cname: 'Dallas', code: 'US-DA' },
+                            { cname: 'Houston', code: 'US-HO' }
+                        ]
+                    }
+                ]
+            }
+        ];
     }
 }

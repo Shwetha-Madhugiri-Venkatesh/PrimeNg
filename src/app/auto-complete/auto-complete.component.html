@@ -1,12 +1,29 @@
-<p>auto-complete works!</p>
-<div class="card flex justify-content-center">
-    <p-autoComplete 
-        [(ngModel)]="selectedItem"
+<div>
+    <p-autoComplete
         [suggestions]="suggestions"
-        (completeMethod)="search($event)" />
+        [dropdown]="true"
+        [forceSelection]="true"
+        [multiple]="true"
+        (completeMethod)="auto_complete($event)"
+        field="fname"
+        inputId="name"
+        [showClear]="true"
+    >
+    <label for="name">Choose name</label>
+    <ng-template let-user pTemplate="items">
+        <pre>{{user.fname}} {{user.lname}}</pre>
+    </ng-template>
+    </p-autoComplete>
 </div>
-
-//Forms
-<form>
-    <input pInputText placeholder="Enter your name"/>
-</form>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>DOB</th>
+    </tr>
+        <tr *ngFor="let user of users">
+        <td>{{user.fname}}</td>
+        <td>{{user.lname}}</td>
+        <td>{{user.dob}}</td>
+    </tr>
+</table>

@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ButtonModule } from 'primeng/button';
 import { AppComponent } from './app.component';
-
-import { DialogModule } from 'primeng/dialog';
-import { DropdownModule } from 'primeng/dropdown';
-import { TooltipModule } from 'primeng/tooltip';
 import { FormsModule } from '@angular/forms';
+import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
+import { HttpClientModule } from '@angular/common/http';
+
 import { InputTextModule } from 'primeng/inputtext';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'primeng/calendar';
+import { CascadeSelectModule } from 'primeng/cascadeselect';
 
 @NgModule({
   declarations: [
@@ -19,14 +18,13 @@ import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    ButtonModule ,
     FormsModule,
-    DialogModule,
-    DropdownModule,
-    TooltipModule,
     InputTextModule,
-    AutoCompleteModule
+    HttpClientModule,
+    AutoCompleteModule,
+    BrowserAnimationsModule,
+    CalendarModule,
+    CascadeSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

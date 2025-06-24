@@ -1,33 +1,53 @@
-<div class="card flex justify-content-center">
-    <p-button label="Check" icon="pi pi-check"></p-button>
-</div>
+<form #form="ngForm" (ngSubmit)="form_submit(form)">
+  <label>First Name</label>
+  <input pInputText type="text" placeholder="Enter your name" name="fname" ngModel/>
+  <br/><br/>
+  <label>Last Name</label>
+  <input pInputText type="text" placeholder="Enter your name" name="lname" ngModel/>
+  <br/><br/>
+  <label>DOB</label>
+  <!-- <input type="datetime-local" placeholder="DOB" name="dob" ngModel/> -->
+
+
+   <p-calendar 
+   name="dob"
+   dateFormat="oo/DD/dd/mm/yy"
+   selectionMode="range"
+   [showButtonBar]="true"
+   [showTime]="true"
+   [hourFormat]="'24'"
+   [showIcon]="true"
+   [numberOfMonths]="2"
+   [minDate]="minDate"
+   [touchUI]="true"
+   ngModel>
+  <!-- <ng-template pTemplate="inputicon" let-clickCallBack="clickCallBack">
+                    <button  
+                        (click)="clickCallBack($event)">clock</button>
+                </ng-template> -->
+                <ng-template pTemplate="date" let-date>
+                    <span [ngStyle]='date.day>10&&date.day<15?{color:"red"}:{color:"green"}'>{{date.day}}</span>
+                </ng-template>
+  </p-calendar>
+
+
+
+
+
+  <br/><br/>
+
+  <label>Enter your city</label>
+  <p-cascadeSelect
+  [options]="countries"
+  optionLabel="cname"
+  optionGroupLabel="name"
+  ></p-cascadeSelect>
+
+  <br/><br/>
+
+  <input type="submit" value="Submit"/>
+</form>
 
 <br/><br/>
-
-<p-button label="Show Dialog" (onClick)="displayDialog = true"></p-button>
-
-<!-- Dropdown -->
-<div style="margin-top: 2rem;">
-  <label for="city">Select a City</label>
-  <p-dropdown
-    [options]="cities"
-    [(ngModel)]="selectedCity"
-    optionLabel="name"
-    placeholder="Select a City"
-    inputId="city"
-    tooltip="Choose your city"
-    tooltipPosition="right"
-  ></p-dropdown>
-</div>
-
-<!-- Dialog -->
-<p-dialog header="Example Dialog" [(visible)]="displayDialog" [modal]="true">
-  <p>This is a modal dialog with higher z-index than dropdown.</p>
-</p-dialog>
-
 <br/><br/>
-
-
-<input pInputText placeholder="Enter your name"/>
-
 <app-auto-complete></app-auto-complete>
