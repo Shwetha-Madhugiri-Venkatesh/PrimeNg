@@ -1,0 +1,9 @@
+/* Add this to your styles.css or component CSS to test */
+.ui-editor-content {
+  color: black !important;
+  background-color: white !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 1 !important;
+  min-height: 150px; /* just to ensure visible area */
+}

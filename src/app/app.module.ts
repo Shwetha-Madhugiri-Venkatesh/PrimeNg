@@ -10,11 +10,16 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
 import { CascadeSelectModule } from 'primeng/cascadeselect';
+import { GraphComponent } from './graph/graph.component';
+import { ChartModule } from 'primeng/chart';
+import { EditorModule } from 'primeng/editor';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   declarations: [
     AppComponent,
     AutoCompleteComponent,
+    GraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,10 @@ import { CascadeSelectModule } from 'primeng/cascadeselect';
     AutoCompleteModule,
     BrowserAnimationsModule,
     CalendarModule,
-    CascadeSelectModule
+    CascadeSelectModule,
+    ChartModule,
+    EditorModule,
+    MultiSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

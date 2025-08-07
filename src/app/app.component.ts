@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HTTPServices } from './Services/http_service';
 
@@ -41,8 +41,13 @@ export class AppComponent{
   //     }
   //   }
   // ]
+      cities;
 
+    selectedCities=[];
+     text: string ;
   ngOnInit() {
+
+
         this.countries = [
             {
                 name: 'Australia',
@@ -117,5 +122,16 @@ export class AppComponent{
                 ]
             }
         ];
+        this.cities = [
+            {name: 'New York', code: 'NY'},
+            {name: 'Rome', code: 'RM'},
+            {name: 'London', code: 'LDN'},
+            {name: 'Istanbul', code: 'IST'},
+            {name: 'Paris', code: 'PRS'},
+            {name: 'Paris', code: 'PRS'},
+            {name: 'Paris', code: 'PRS'}
+        ];
+
+        this.selectedCities=this.cities;
     }
 }
